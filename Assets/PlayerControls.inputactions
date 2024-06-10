@@ -46,7 +46,7 @@
                     "type": "Button",
                     "id": "a609d499-ea04-4030-82a9-e9ba1b89fe82",
                     "expectedControlType": "Button",
-                    "processors": "",
+                    "processors": "Switch",
                     "interactions": "",
                     "initialStateCheck": false
                 },
@@ -97,7 +97,7 @@
                 {
                     "name": "left",
                     "id": "9d72d8d1-e511-4b49-89d2-56c25945628f",
-                    "path": "<Keyboard>/d",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -108,7 +108,7 @@
                 {
                     "name": "right",
                     "id": "8a50133a-690d-464b-a685-9e863427ae8c",
-                    "path": "<Keyboard>/a",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

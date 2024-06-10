@@ -99,9 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 4459864851310106426}
   fov: 60
-  invertCamera: 0
   cameraCanMove: 1
-  mouseSensitivity: 2
+  mouseSensitivity: 7.5
   maxLookAngle: 50
   canCameraLurch: 1
   cameraLurchStrength: 0.01
@@ -111,7 +110,6 @@ MonoBehaviour:
   crosshairImage: {fileID: 21300000, guid: be4ce60e2c9768c44b9b10b9c5258045, type: 3}
   crosshairColor: {r: 1, g: 1, b: 1, a: 1}
   enableZoom: 1
-  holdToZoom: 1
   zoomKey: 324
   zoomFOV: 30
   zoomStepTime: 5
@@ -137,7 +135,6 @@ MonoBehaviour:
   jumpKey: 32
   jumpPower: 5
   enableCrouch: 1
-  holdToCrouch: 1
   crouchKey: 306
   crouchHeight: 0.75
   speedReduction: 0.5
