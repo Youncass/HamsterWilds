@@ -1,4 +1,5 @@
-﻿using Sources.Services.Input;
+﻿using Sources.Services.PlayerFactory;
+using Sources.Services.Input;
 using UnityEngine.InputSystem;
 using UnityEngine;
 using Zenject;
@@ -10,15 +11,17 @@ namespace Sources.Infrastructure
 {
     public class MainSceneInstaller : MonoInstaller
     {
-        [SerializeField] private GameObject _playerPrefab;
         [SerializeField] private Transform _playerPosition;
         [SerializeField] private InputActionAsset _playerControls;
+
+        private PlayerFactory _playerFactory;
 
         private readonly CompositeDisposable _disposables = new();
 
         public override void InstallBindings()
         {
             RegisterPlayerInput();
+            RegisterPlayerFactory();
             CreatePlayer();
 
 
@@ -29,15 +32,22 @@ namespace Sources.Infrastructure
                     .FromInstance(new PlayerInput(_playerControls).AddTo(_disposables))
                     .AsSingle();
             }
+
+            void RegisterPlayerFactory()
+            {
+                _playerFactory = Container.New<PlayerFactory>();
+                Container.Bind<IPlayerFactory>().FromInstance(_playerFactory).AsSingle();
+            }
         }
-        
+
         private void CreatePlayer()
         {
-            Container.InstantiatePrefab(
-                _playerPrefab,
-                _playerPosition.position,
-                Quaternion.identity,
-                parentTransform: null);
+            _playerFactory.CreatePlayer(at: _playerPosition.position);
+        }
+
+        private void OnDestroy()
+        {
+            _playerFactory.DestroyPlayer();
         }
     }
 }

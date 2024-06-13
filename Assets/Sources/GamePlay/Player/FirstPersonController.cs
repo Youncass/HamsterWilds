@@ -167,7 +167,7 @@ namespace Sources.GamePlayer.Player
             void SubscribeToCrouchInput()
             {
                 _playerInput.Crouching
-                    .Where(x => isSprinting == false)
+                    .Where(x => isSprinting == false && isGrounded && isCrouched != x)
                     .Subscribe(value =>
                 {
                     isCrouched = !value;
@@ -447,12 +447,8 @@ namespace Sources.GamePlayer.Player
 
         private void Jump()
         {
-            // Adds force to the player rigidbody to jump
-            if (isGrounded)
-            {
-                rb.AddForce(0f, jumpPower, 0f, ForceMode.Impulse);
-                isGrounded = false;
-            }
+            rb.AddForce(0f, jumpPower, 0f, ForceMode.Impulse);
+            isGrounded = false;
 
             // When crouched and using toggle system, will uncrouch for a jump
             if (isCrouched)

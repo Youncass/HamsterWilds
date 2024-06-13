@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine.InputSystem;
+
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -13,14 +14,11 @@ namespace Sources
     public class SwitchProcessor : InputProcessor<float>
     {
 #if UNITY_EDITOR
-        static SwitchProcessor()
-        {
-            InputSystem.RegisterProcessor<SwitchProcessor>("Switch");
-        }
+        static SwitchProcessor() => InputSystem.RegisterProcessor<SwitchProcessor>("Switch");
 #endif
 
         private float _currentValue;
-
+        
         public override float Process(float value, InputControl control)
         {
             if (value == 1)
